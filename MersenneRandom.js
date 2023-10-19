@@ -3,8 +3,7 @@
 let seed = Date.now();
 const MaxInt64 = Number.MAX_SAFE_INTEGER;
 function min(a,b){return a<b?a:b};
-function abs(a){return a&0x800000000000000};
-function Xorshift(){seed^=seed<<7;seed^=seed>>>9;return min(1,abs(seed)/2E9)};
+function Xorshift(){seed^=seed<<7;seed^=seed>>>9;return min(1,Math.abs(seed)/2E9)};
 
 // メルセンヌ・ツイスタのアルゴリズム
 function next(x, a, c, m) {
