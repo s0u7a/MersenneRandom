@@ -3,10 +3,9 @@
 let seed = Date.now();
 
 function Random() {
-    seed ^= seed << 7;
-    seed ^= seed >>> 9;
-
-    return Math.min(1, Math.abs(seed) / 2000000000);
+    seed = seed ^ (seed << 7);
+    seed = seed ^ (seed >>> 9);
+    return seed
 }
 // メルセンヌ・ツイスタのアルゴリズム
 function next(x, a, c, m) {
