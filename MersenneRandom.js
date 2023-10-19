@@ -1,3 +1,12 @@
+//Math.Random関数の高速実装
+let seed = Date.now();
+
+function Random() {
+    seed ^= seed << 7;
+    seed ^= seed >>> 9;
+
+    return Math.min(1, Math.abs(seed) / 2000000000);
+}
 // メルセンヌ・ツイスタのアルゴリズム
 function next(x, a, c, m) {
   return (x * a + c) % m;
@@ -6,18 +15,18 @@ function next(x, a, c, m) {
 // 乱数生成関数
 function MersenneRandom(seed) {
   // シード値の生成
-  var x = seed || Math.random() * 2**63 - 1;
+  var x = seed || Random() * 2**63 - 1;
   var s = [
-    Math.random() * 2**63 - 1,
-    Math.random() * 2**63 - 1,
-    Math.random() * 2**63 - 1,
+    Random() * 2**63 - 1,
+    Random() * 2**63 - 1,
+    Random() * 2**63 - 1,
     Math.random() * 2**63 - 1,
   ];
 
   // 攪拌処理
   for (var i = 0; i < 624; i++) {
     // 暗号化された乱数を生成
-    var r32 = Math.random() * 2**31 - 1;
+    var r32 = Random() * 2**31 - 1;
 
     // シード値を更新
     x = next(x, s[0], s[1], 2**63 - 1);
