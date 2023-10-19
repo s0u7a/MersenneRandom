@@ -1,5 +1,5 @@
-//Math.Random関数の高速実装 
-//参考:https://zenn.dev/ame_x/articles/b3ada5021ed174
+// Math.Random関数の高速実装 
+// 参考:https://zenn.dev/ame_x/articles/b3ada5021ed174
 let seed = Date.now();
 
 function Random() {
@@ -26,7 +26,7 @@ function MersenneRandom(seed) {
 
   // 攪拌処理
   for (var i = 0; i < 624; i++) {
-    // 暗号化された乱数を生成
+    // 乱数を生成
     var r32 = Random() * 2**31 - 1;
 
     // シード値を更新
