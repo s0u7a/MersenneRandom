@@ -2,7 +2,7 @@
 // 参考:https://zenn.dev/ame_x/articles/b3ada5021ed174
 let seed = Date.now();
 
-function Random() {
+function Xorshift() {
     seed = seed ^ (seed << 7);
     seed = seed ^ (seed >>> 9);
     return seed
@@ -15,18 +15,18 @@ function next(x, a, c, m) {
 // 乱数生成関数
 function MersenneRandom(seed) {
   // シード値の生成
-  var x = seed || Random() * 2**63 - 1;
+  var x = seed || Xorshift() * 2**63 - 1;
   var s = [
-    Random() * 2**63 - 1,
-    Random() * 2**63 - 1,
-    Random() * 2**63 - 1,
-    Math.random() * 2**63 - 1,
+    Xorshift() * 2**63 - 1,
+    Xorshift() * 2**63 - 1,
+    Xorshift() * 2**63 - 1,
+    Xorshift() * 2**63 - 1,
   ];
 
   // 攪拌処理
   for (var i = 0; i < 624; i++) {
     // 乱数を生成
-    var r32 = Random() * 2**31 - 1;
+    var r32 = Xorshift() * 2**31 - 1;
 
     // シード値を更新
     x = next(x, s[0], s[1], 2**63 - 1);
