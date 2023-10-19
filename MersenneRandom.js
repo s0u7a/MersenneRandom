@@ -17,8 +17,7 @@ function MersenneRandom(seed) {
   // 攪拌処理
   for (var i = 0; i < 624; i++) {
     // 暗号化された乱数を生成
-    var r = window.crypto.getRandomValues(new Uint32Array(1));
-    var r32 = r[0];
+    var r32 = Math.random() * 2**31 - 1;
 
     // シード値を更新
     x = next(x, s[0], s[1], 2**63 - 1);
