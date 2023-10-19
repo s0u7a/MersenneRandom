@@ -1,4 +1,4 @@
-//Math.Random関数の高速実装
+//Math.Random関数の高速実装 参考:https://zenn.dev/ame_x/articles/b3ada5021ed174
 let seed = Date.now();
 
 function Random() {
